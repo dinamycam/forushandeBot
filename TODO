@@ -1,0 +1,11 @@
+website:
+    fetch updates from website
+    save the values for different parts
+
+database:
+    reading from db when a button is pressed.
+    writing to db on intervals
+
+telegram_bot:
+    what every button should do
+    overall design
