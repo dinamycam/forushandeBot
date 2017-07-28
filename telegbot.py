@@ -1,11 +1,11 @@
-import os, subprocess
 import logging
-import apifetch
-from telegram import bot
-from telegram import update
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-import redis
+import os
+import subprocess
 
+import redis
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+
+import apifetch
 
 # adding a logger to monitor crashes and easier debugging
 
@@ -126,14 +126,8 @@ def gen_category(bot, update):
     Returns:
         reply_markup
     """
-    # categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/", "categories")
+    categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/", "categories")
     logger.debug("update categories requested!")
-    categories = [{"name": "phones", "id":"100"},
-                  {"name": "TV", "id":"5"},
-                  {"name": "اسپینر", "id":"0"},
-                  {"name": "tablets", "id":"1000"},
-                  {"name": "phablets", "id":"200"},
-                  {"name": "best", "id": "5000"}]
 
     option_btn = 'name'
     callback = 'id'
@@ -143,7 +137,6 @@ def gen_category(bot, update):
         print(item)
         cat_names.append(item[option_btn])
     logger.debug("generated a list from the name of categories; {}".format(cat_names))
-    cat_names = ['xiaomi', 't4', 't3', 'سونی' , 'redmi', 'note'] #, 'موبایل']
 
     button_list = [InlineKeyboardButton(s, callback_data=str(categories[cat_names.index(s)][callback])) for s in cat_names]
     reply_markup = build_menu(button_list, n_cols=1)

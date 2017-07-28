@@ -10,5 +10,5 @@ def fetch_json(base, route):
     # logger.info("a request to the api was sent")
     return product.json()
 
-        reply_markup = build_menu(button_list, n_cols=len(cat_names))
-        logger.debug("reply keyboard for category was returned")
+    reply_markup = build_menu(button_list, n_cols=len(cat_names))
+    logger.debug("reply keyboard for category was returned")
