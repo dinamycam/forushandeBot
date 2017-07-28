@@ -3,6 +3,7 @@ website:
     save the values for different parts
 
 database:
+    connecting to redis
     reading from db when a button is pressed.
     writing to db on intervals
 

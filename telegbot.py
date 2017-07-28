@@ -93,11 +93,11 @@ def build_menu(buttons,
 
 def button(bot, update):
     query = update.callback_query
-
-    bot.editMessageText(text="Selected option: %s" % query.data,
-                        chat_id=query.message.chat_id,
-                        message_id=query.message.message_id)
-    logger.debug("callback query handled by button_edit")
+    if query[:2] == "id":
+        bot.editMessageText(text="Selected option: %s" % query.data,
+                            chat_id=query.message.chat_id,
+                            message_id=query.message.message_id)
+        logger.debug("callback query for 'categories' handled by button_edit")
 
 
 def button_new(bot, update):
@@ -111,11 +111,11 @@ def button_new(bot, update):
 
 def button_more(bot, update):
     query = update.callback_query
-
-    bot.editMessageText(text="Selected option: %s" % query.data,
-                        chat_id=query.message.chat_id,
-                        message_id=query.message.message_id)
-    logger.debug("callback query handled by button_new")
+    if query == "more":
+        bot.editMessageText(text="Selected option: %s" % query.data,
+                            chat_id=query.message.chat_id,
+                            message_id=query.message.message_id)
+        logger.debug("callback query handled by button_more")
 
 
 def gen_category(bot, update):
@@ -138,7 +138,7 @@ def gen_category(bot, update):
         cat_names.append(item[option_btn])
     logger.debug("generated a list from the name of categories; {}".format(cat_names))
 
-    button_list = [InlineKeyboardButton(s, callback_data=str(categories[cat_names.index(s)][callback])) for s in cat_names]
+    button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback])) for s in cat_names]
     reply_markup = build_menu(button_list, n_cols=1)
     logger.debug("reply keyboard for category was returned")
 
