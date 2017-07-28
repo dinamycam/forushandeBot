@@ -111,7 +111,7 @@ def button_new(bot, update):
 
 def button_more(bot, update):
     query = update.callback_query
-    if query == "more":
+    if query[:4] == "more":
         bot.editMessageText(text="Selected option: %s" % query.data,
                             chat_id=query.message.chat_id,
                             message_id=query.message.message_id)
@@ -127,6 +127,7 @@ def gen_category(bot, update):
         reply_markup
     """
     categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/", "categories")
+    # TODO: implement fetch from database instead of url
     logger.debug("update categories requested!")
 
     option_btn = 'name'
@@ -137,9 +138,13 @@ def gen_category(bot, update):
         print(item)
         cat_names.append(item[option_btn])
     logger.debug("generated a list from the name of categories; {}".format(cat_names))
-
-    button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback])) for s in cat_names]
-    reply_markup = build_menu(button_list, n_cols=1)
+    if len(cat_names) < 6:
+        button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback])) for s in cat_names]
+        reply_markup = build_menu(button_list, n_cols=1)
+    else:
+        show_more = InlineKeyboardButton("بیشتر...", callback_data="more_categories")
+        button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback])) for s in cat_names]
+        reply_markup = build_menu(button_list, n_cols=1, footer_buttons=[show_more])
     logger.debug("reply keyboard for category was returned")
 
     return reply_markup
