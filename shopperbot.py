@@ -1,7 +1,5 @@
 import logging
-
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
-
 import telegbot
 
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
@@ -12,8 +10,8 @@ logging.basicConfig(filename='./bot.log',
 
 logger = logging.getLogger()
 
-# get_token()
-updates = Updater('435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4')
+token = telegbot.get_token()
+updates = Updater(token)
 
 logger.info("adding dispatchers")
 
