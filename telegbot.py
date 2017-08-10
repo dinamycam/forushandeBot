@@ -3,7 +3,7 @@ import os
 import subprocess
 
 import redis
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 import apifetch
 
