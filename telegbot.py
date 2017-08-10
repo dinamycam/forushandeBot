@@ -3,7 +3,7 @@ import os
 import subprocess
 
 import redis
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton
 
 import apifetch
 
@@ -140,11 +140,11 @@ def gen_category(bot, update):
     logger.debug("generated a list from the name of categories; {}".format(cat_names))
     if len(cat_names) < 6:
         button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback])) for s in cat_names]
-        reply_markup = build_menu(button_list, n_cols=1)
+        reply_markup = build_menu(button_list, n_cols=3)
     else:
         show_more = InlineKeyboardButton("بیشتر...", callback_data="more_categories")
         button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback])) for s in cat_names]
-        reply_markup = build_menu(button_list, n_cols=1, footer_buttons=[show_more])
+        reply_markup = build_menu(button_list, n_cols=3)
     logger.debug("reply keyboard for category was returned")
 
     return reply_markup
