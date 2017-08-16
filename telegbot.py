@@ -17,11 +17,6 @@ logging.basicConfig(filename='./telegbot.log',
 
 logger = logging.getLogger()
 
-# redis database
-rds = redis.StrictRedis(host="localhost", port=6379, db=1)
-stat = rds.get("status")
-logger.info("in database, status is: {}".format(stat))
-
 
 def get_token():
     token = os.getenv("FORUSHANDE_BOT")
@@ -32,8 +27,6 @@ def get_token():
         # print(token)
         return token
     # raise Exception("Err: shell variable not fonud")
-
-
 
 
 def start(bot, update):
@@ -93,26 +86,27 @@ def build_menu(buttons,
 
 def button(bot, update):
     query = update.callback_query
-    if query[:2] == "id":
-        bot.editMessageText(text="Selected option: %s" % query.data,
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id)
-        logger.debug("callback query for 'categories' handled by button_edit")
+    logger.debug("a query was sent {query.data}")
+    if query.data[:2] == "id":
+        bot.send_message(text="Selected option: %s" % query.data[3:],
+                         chat_id=query.message.chat_id,
+                         parse_mode='HTML')
+        logger.debug("callback query for handled by button_edit")
 
 
 def button_new(bot, update):
     query = update.callback_query
 
-    bot.editMessageText(text="Selected option: %s" % query.data,
+    bot.send_message(text="%s" % query.data,
                         chat_id=query.message.chat_id,
-                        message_id=query.message.message_id)
+                        )
     logger.debug("callback query handled by button_new")
 
 
 def button_more(bot, update):
     query = update.callback_query
     if query[:4] == "more":
-        bot.editMessageText(text="Selected option: %s" % query.data,
+        bot.editMessageText(text="Selected option: %s" % query.data[5:],
                             chat_id=query.message.chat_id,
                             message_id=query.message.message_id)
         logger.debug("callback query handled by button_more")
@@ -126,7 +120,7 @@ def gen_category(bot, update):
     Returns:
         reply_markup
     """
-    categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/", "categories")
+    categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/", "categories/parents")
     # TODO: implement fetch from database instead of url
     logger.debug("update categories requested!")
 
@@ -138,13 +132,16 @@ def gen_category(bot, update):
         print(item)
         cat_names.append(item[option_btn])
     logger.debug("generated a list from the name of categories; {}".format(cat_names))
-    if len(cat_names) < 6:
-        button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback])) for s in cat_names]
+
+    button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback]))
+                   for s in cat_names]
+    if len(cat_names) < 6 :
         reply_markup = build_menu(button_list, n_cols=3)
     else:
         show_more = InlineKeyboardButton("بیشتر...", callback_data="more_categories")
-        button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback])) for s in cat_names]
-        reply_markup = build_menu(button_list, n_cols=3)
+        global button_rest
+        button_rest = button_list.pop(len(button_list) - 6)
+        reply_markup = build_menu(button_list, n_cols=3, footer_buttons=[show_more])
     logger.debug("reply keyboard for category was returned")
 
     return reply_markup

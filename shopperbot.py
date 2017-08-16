@@ -3,7 +3,7 @@ from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 import telegbot
 
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-logging.basicConfig(filename='./bot.log',
+logging.basicConfig(filename='./telegbot.log',
                              format=LOG_FORMAT,
                              filemode='w',
                              level=logging.INFO)
@@ -18,7 +18,7 @@ logger.info("adding dispatchers")
 
 updates.dispatcher.add_handler(CommandHandler('start', telegbot.start))
 updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button))
-updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_more))
+updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_new))
 updates.dispatcher.add_handler(CommandHandler('help', telegbot.help))
 # updates.dispatcher.add_handler(CommandHandler('end', telegbot.help))
 
