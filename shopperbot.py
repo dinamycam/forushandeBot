@@ -17,10 +17,12 @@ logger.info("adding dispatchers")
 
 
 updates.dispatcher.add_handler(CommandHandler('start', telegbot.start))
-updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button))
-updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_new))
 updates.dispatcher.add_handler(CommandHandler('help', telegbot.help))
-# updates.dispatcher.add_handler(CommandHandler('end', telegbot.help))
+
+updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button))
+updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_parent))
+updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_new))
+updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_more))
 
 logger.info("all commands configured")
 
