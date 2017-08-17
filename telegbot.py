@@ -150,13 +150,13 @@ def parents_menu(bot, update):
     return reply_markup
 
 
-def gen_category(categories, button_name, callbackfield, callbackhead):
+def gen_category(categories, buttonfield, callbackfield, callbackheader):
     cat_names = []
     for item in categories:
         print(item)
-        cat_names.append(item[button_name])
+        cat_names.append(item[buttonfield])
     logger.info("generated a list from the name of categories; {}".format(cat_names))
 
-    button_list = [InlineKeyboardButton(s, callback_data=callbackhead+str(categories[cat_names.index(s)][callbackfield]))
+    button_list = [InlineKeyboardButton(s, callback_data=callbackheader + str(categories[cat_names.index(s)][callbackfield]))
                    for s in cat_names]
     return cat_names, button_list
