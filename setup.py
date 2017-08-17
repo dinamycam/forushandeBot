@@ -1,12 +1,12 @@
 from distutils.core import setup
 
 setup(
-    name='forooshande',
-    version='',
+    name='code',
+    version='0.01',
     packages=[''],
-    url='http://gitlab.com/pouya-barzegar/forooshande',
-    license='GPLv3',
+    url='https://github.com/pouya-barzegar/forooshande_bot',
+    license='MIT',
     author='dinamyc',
     author_email='poooooyabarzegar@gmail.com',
-    description='a telegram bot for making it to the shop in time'
+    description='making it to the shop easy peasy'
 )
