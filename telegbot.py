@@ -67,7 +67,7 @@ def build_menu(buttons,
                footer_buttons=None):
     """
     :param buttons: a list of buttons
-    :param n_cols:  how many columns to show the buttons in
+    :param n_cols:  how many columns to show the butt,ons in
     :param header_buttons:  list of buttons appended to the beginning
     :param footer_buttons:  list of buttons added to the end
     :return: the menu
@@ -91,7 +91,7 @@ def button(bot, update):
         bot.send_message(text="Selected option: %s" % query.data[5:],
                          chat_id=query.message.chat_id,
                          parse_mode='HTML')
-        logger.debug("callback query for handled by button_edit")
+        logger.debug("callback query for handled by button")
 
 
 def button_parent(bot, update):
@@ -107,15 +107,15 @@ def button_parent(bot, update):
         # bot.send_message(text="Selected option: %s" % query.data[5:],
         #                  chat_id=query.message.chat_id,
         #                  parse_mode='HTML')
-        update.message.reply_text('Please choose a category:', reply_markup=reply_markup)
-        logger.debug("callback query for handled by button_edit")
+        update.message.reply_text('sub categories for selected button are:', reply_markup=reply_markup)
+        logger.debug("callback query for handled by button_parent")
 
 
 def button_new(bot, update):
     query = update.callback_query
 
     bot.send_message(text="%s" % query.data,
-                        chat_id=query.message.chat_id,
+                        chat_id=query.message.chat_id
                         )
     logger.debug("callback query handled by button_new")
 
