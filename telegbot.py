@@ -20,11 +20,11 @@ logger = logging.getLogger()
 
 def get_token():
     token = os.getenv("FORUSHANDE_BOT")
-    if token == None or token == '':
+    if token is None or not token:
         token = subprocess.call(["echo", "$FORUSHANDE_BOT"])
 
     if token:
-        # print(token)
+        print(token)
         return token
     # raise Exception("Err: shell variable not fonud")
 
@@ -35,7 +35,7 @@ def start(bot, update):
     logger.info("start command used by {} ".format(update.message.from_user.first_name))
     logger.debug("new user << {} >>started the bot".format(update.message.from_user))
 
-    reply_markup = gen_category(bot, update)
+    reply_markup = parents_menu(bot, update)
     logger.debug("a keyboard was generated from categories")
     # keyboard = [[InlineKeyboardButton("Option 1", callback_data='1'),
     #             InlineKeyboardButton("Option 2", callback_data='2')],
@@ -86,11 +86,28 @@ def build_menu(buttons,
 
 def button(bot, update):
     query = update.callback_query
-    logger.debug("a query was sent {query.data}")
-    if query.data[:2] == "id":
-        bot.send_message(text="Selected option: %s" % query.data[3:],
+    logger.debug("a query was sent {}".format(query.data))
+    if query.data[:4] == "caid:":
+        bot.send_message(text="Selected option: %s" % query.data[5:],
                          chat_id=query.message.chat_id,
                          parse_mode='HTML')
+        logger.debug("callback query for handled by button_edit")
+
+
+def button_parent(bot, update):
+    query = update.callback_query
+    logger.debug("a query was sent {}".format(query.data))
+
+    baseurl = "http://sunbyteit.com:8000/api/"
+    suburl = "category/subs/all/{}".format(query.data[9:])
+    if query.data[:4] == "paid:":
+        child_categories = apifetch.fetch_json(baseurl, suburl)
+        cat_names, cat_menu = gen_category(child_categories, "name", "id", "caid:")
+        reply_markup = build_menu(cat_menu, n_cols=3)
+        # bot.send_message(text="Selected option: %s" % query.data[5:],
+        #                  chat_id=query.message.chat_id,
+        #                  parse_mode='HTML')
+        update.message.reply_text('Please choose a category:', reply_markup=reply_markup)
         logger.debug("callback query for handled by button_edit")
 
 
@@ -112,37 +129,34 @@ def button_more(bot, update):
         logger.debug("callback query handled by button_more")
 
 
-def gen_category(bot, update):
-    """
-    Args:
-        bot, update
-
-    Returns:
-        reply_markup
-    """
-    categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/", "categories/parents")
+def parents_menu(bot, update):
+    categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/", "category/parents")
     # TODO: implement fetch from database instead of url
     logger.debug("update categories requested!")
 
     option_btn = 'name'
     callback = 'id'
 
-    cat_names = []
-    for item in categories:
-        print(item)
-        cat_names.append(item[option_btn])
-    logger.debug("generated a list from the name of categories; {}".format(cat_names))
-
-    button_list = [InlineKeyboardButton(s, callback_data="id:"+str(categories[cat_names.index(s)][callback]))
-                   for s in cat_names]
-    if len(cat_names) < 6 :
+    parent_names, button_list = gen_category(categories, option_btn, callback, "paid:")
+    if len(parent_names) < 6:
         reply_markup = build_menu(button_list, n_cols=3)
     else:
         show_more = InlineKeyboardButton("بیشتر...", callback_data="more_categories")
-        global button_rest
-        button_rest = button_list.pop(len(button_list) - 6)
+        button_rest = button_list[6:]
+        del button_list[6:]
         reply_markup = build_menu(button_list, n_cols=3, footer_buttons=[show_more])
     logger.debug("reply keyboard for category was returned")
 
     return reply_markup
 
+
+def gen_category(categories, button_name, callbackfield, callbackhead):
+    cat_names = []
+    for item in categories:
+        print(item)
+        cat_names.append(item[button_name])
+    logger.info("generated a list from the name of categories; {}".format(cat_names))
+
+    button_list = [InlineKeyboardButton(s, callback_data=callbackhead+str(categories[cat_names.index(s)][callbackfield]))
+                   for s in cat_names]
+    return cat_names, button_list
