@@ -6,7 +6,7 @@ setup(
     packages=[''],
     url='https://github.com/pouya-barzegar/forooshande_bot',
     license='MIT',
-    author='dinamyc',
+    author='pouya barzegar',
     author_email='poooooyabarzegar@gmail.com',
     description='making it to the shop easy peasy'
 )
