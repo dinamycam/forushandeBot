@@ -3,7 +3,7 @@ import logging
 
 # from telegbot import logger
 
-# baseurl = "http://sunbyteit.com/"
+# baseurl = "http://sunbyteit.com/api:8000"
 
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(filename='./telegbot.log',
@@ -12,6 +12,7 @@ logging.basicConfig(filename='./telegbot.log',
                     level=logging.DEBUG)
 
 logger = logging.getLogger()
+
 
 def fetch_json(base, route):
     product = req.get(base + route)
