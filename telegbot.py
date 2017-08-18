@@ -99,17 +99,18 @@ def button_parent(bot, update):
     logger.debug("a query was sent {}".format(query.data))
 
     baseurl = "http://sunbyteit.com:8000/api/"
-    suburl = "category/subs/all/{}".format(query.data[9:])
-    if query.data[:4] == "paid:":
-        child_categories = apifetch.fetch_json(baseurl, suburl)
-        cat_names, cat_menu = gen_category(child_categories, "name", "id", "caid:")
-        reply_markup = build_menu(cat_menu, n_cols=3)
-        # bot.send_message(text="Selected option: %s" % query.data[5:],
-        #                  chat_id=query.message.chat_id,
-        #                  parse_mode='HTML')
-        update.message.reply_text('sub categories for selected button are:', reply_markup=reply_markup)
-        logger.debug("callback query handled by button_parent")
+    suburl = "category/subs/all/{}".format(query.data[5:])
+    child_categories = apifetch.fetch_json(baseurl, suburl)
+    cat_names, cat_menu = gen_category(child_categories, "name", "id", "caid:")
+    reply_markup = build_menu(cat_menu, n_cols=3)
+    logger.debug("query handler built a menu")
 
+    bot.send_message(text="Selected option: %s" % query.data[5:],
+                     chat_id=query.message.chat_id,
+                     reply_markup=reply_markup,
+                     parse_mode='HTML')
+    query.answer()
+    logger.debug("callback query handled by button_parent")
 
 def button_new(bot, update):
     query = update.callback_query
@@ -130,7 +131,8 @@ def button_more(bot, update):
 
 
 def parents_menu(bot, update):
-    categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/", "category/parents")
+    categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/",
+                                     "category/parents")
     # TODO: implement fetch from database instead of url
     logger.debug("update categories requested!")
 
