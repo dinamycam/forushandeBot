@@ -94,7 +94,7 @@ def button_parent(bot, update):
     reply_markup = build_menu(cat_menu, n_cols=3)
     logger.debug("query handler built a menu")
 
-    bot.send_message(text="Selected option: %s" % query.data[5:],
+    bot.send_message(text="Selected: %s" % query.data[5:],
                      chat_id=query.message.chat_id,
                      reply_markup=reply_markup,
                      parse_mode='HTML')
