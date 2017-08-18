@@ -2,13 +2,12 @@ import logging
 import os
 import subprocess
 
-import redis
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 import apifetch
+import dbase
 
 # adding a logger to monitor crashes and easier debugging
-
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(filename='./telegbot.log',
                     format=LOG_FORMAT,
@@ -84,16 +83,6 @@ def build_menu(buttons,
     return InlineKeyboardMarkup(menu)
 
 
-def button(bot, update):
-    query = update.callback_query
-    logger.debug("a query was sent {}".format(query.data))
-    if query.data[:4] == "caid:":
-        bot.send_message(text="Selected option: %s" % query.data[5:],
-                         chat_id=query.message.chat_id,
-                         parse_mode='HTML')
-        logger.debug("callback query handled by button")
-
-
 def button_parent(bot, update):
     query = update.callback_query
     logger.debug("a query was sent {}".format(query.data))
@@ -112,22 +101,13 @@ def button_parent(bot, update):
     query.answer()
     logger.debug("callback query handled by button_parent")
 
-def button_new(bot, update):
-    query = update.callback_query
-
-    bot.send_message(text="%s" % query.data,
-                        chat_id=query.message.chat_id
-                        )
-    logger.debug("callback query handled by button_new")
-
 
 def button_more(bot, update):
     query = update.callback_query
-    if query[:4] == "more":
-        bot.editMessageText(text="Selected option: %s" % query.data[5:],
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id)
-        logger.debug("callback query handled by button_more")
+    data_base = dbase.start_redis(db=2)
+    more_buttons = data_base.get("more_buttons")
+    query.edit_message_reply_markup(reply_markup=more_buttons)
+    logger.debug("callback query handled by button_more")
 
 
 def parents_menu(bot, update):

@@ -22,7 +22,7 @@ updates.dispatcher.add_handler(CommandHandler('help', telegbot.help))
 updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_parent, pattern="paid.*"))
 # updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button))
 # updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_new))
-# updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_more))
+updates.dispatcher.add_handler(CallbackQueryHandler(telegbot.button_more, pattern="more.*"))
 
 logger.info("all commands configured")
 
