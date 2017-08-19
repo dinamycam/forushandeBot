@@ -85,7 +85,7 @@ def build_menu(buttons,
 
 def button_parent(bot, update):
     query = update.callback_query
-    logger.debug("a query was sent {}".format(query.data))
+    logger.debug("a query was sent to parents Qhandler {}".format(query.data))
 
     baseurl = "http://sunbyteit.com:8000/api/"
     suburl = "category/subs/all/{}".format(query.data[5:])
@@ -95,6 +95,22 @@ def button_parent(bot, update):
     logger.debug("query handler built a menu")
 
     bot.send_message(text="Selected: %s" % query.data[5:],
+                     chat_id=query.message.chat_id,
+                     reply_markup=reply_markup,
+                     parse_mode='HTML')
+    query.answer()
+    logger.debug("callback query handled by button_parent")
+
+def button_category(bot, update):
+    query = update.callback_query
+    logger.debug("a query was sent for category qhandler {}".format(query.data))
+    baseurl = "http://sunbyteit.com:8000/api/"
+    suburl = "category/subs/all/{}".format(query.data[5:])
+    products = apifetch.fetch_json(baseurl, suburl)
+    product_names, product_menu = gen_category(products, "name", "id", "prid:")
+    reply_markup = build_menu(product_menu, n_cols=1)
+
+    bot.send_message(text="Products:",
                      chat_id=query.message.chat_id,
                      reply_markup=reply_markup,
                      parse_mode='HTML')
