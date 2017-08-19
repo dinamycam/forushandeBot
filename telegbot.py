@@ -48,7 +48,6 @@ def start(bot, update):
 
 
 def help(bot, update):
-
     update.message.reply_text(
         'Help\n'
         'dear ` {} `,\n'
@@ -105,7 +104,7 @@ def button_category(bot, update):
     query = update.callback_query
     logger.debug("a query was sent for category qhandler {}".format(query.data))
     baseurl = "http://sunbyteit.com:8000/api/"
-    suburl = "category/subs/all/{}".format(query.data[5:])
+    suburl = "category/products/{}".format(query.data[5:])
     products = apifetch.fetch_json(baseurl, suburl)
     product_names, product_menu = gen_category(products, "name", "id", "prid:")
     reply_markup = build_menu(product_menu, n_cols=1)
