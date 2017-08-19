@@ -16,6 +16,6 @@ logger = logging.getLogger()
 
 def fetch_json(base, route):
     product = req.get(base + route)
-    logger.info("a request to the api was sent")
+    logger.info("a request to the api for {route} was sent")
     return product.json()
 
