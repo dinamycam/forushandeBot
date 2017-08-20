@@ -107,9 +107,14 @@ def button_category(bot, update):
     suburl = "category/products/{}".format(query.data[5:])
     products = apifetch.fetch_json(baseurl, suburl)
     product_names, product_menu = gen_category(products, "name", "id", "prid:")
-    reply_markup = build_menu(product_menu, n_cols=1)
 
-    bot.send_message(text="Products:",
+    baseurl = "http://sunbyteit.com:8000/api/"
+    suburl = "category/subs/all/{}".format(query.data[5:])
+    sub_cats = apifetch.fetch_json(baseurl, suburl)
+    cat_names, cats_menu = gen_category(subcats, "name", "id", "caid:")
+
+    reply_markup = build_menu(product_menu, n_cols=1, header_buttons=cats_menu)
+    bot.send_message(text="there are Sub categories and products here:",
                      chat_id=query.message.chat_id,
                      reply_markup=reply_markup,
                      parse_mode='HTML')
