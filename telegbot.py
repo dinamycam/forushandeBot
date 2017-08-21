@@ -106,7 +106,7 @@ def button_category(bot, update):
     baseurl = "http://sunbyteit.com:8000/api/"
     suburl = "category/products/{}".format(query.data[5:])
     products = apifetch.fetch_json(baseurl, suburl)
-    product_names, product_menu = gen_category(products, "name", "id", "prid:")
+    product_names, product_menu = gen_category(products, "name", "id", "prid:", url="http://www.sunbyteit.com/products/{}")
 
     baseurl = "http://sunbyteit.com:8000/api/"
     suburl = "category/subs/all/{}".format(query.data[5:])
@@ -152,13 +152,14 @@ def parents_menu(bot, update):
     return reply_markup
 
 
-def gen_category(categories, buttonfield, callbackfield, callbackheader):
+def gen_category(categories, buttonfield, callbackfield, callbackheader, url=""):
     cat_names = []
     for item in categories:
         print(item)
         cat_names.append(item[buttonfield])
     logger.info("generated a list from the name of categories; {}".format(cat_names))
 
-    button_list = [InlineKeyboardButton(s, callback_data=callbackheader + str(categories[cat_names.index(s)][callbackfield]))
+    button_list = [InlineKeyboardButton(s, url=url.format(str(categories[cat_names.index(s)][callbackfield])),
+                                        callback_data=callbackheader+str(categories[cat_names.index(s)][callbackfield]))
                    for s in cat_names]
     return cat_names, button_list
