@@ -16,6 +16,8 @@ logging.basicConfig(filename='./telegbot.log',
 
 logger = logging.getLogger()
 
+global baseurl
+baseurl = "http://ka2yab.com:8000/api/"
 
 def get_token():
     token = os.getenv("FORUSHANDE_BOT")
@@ -86,7 +88,7 @@ def button_parent(bot, update):
     query = update.callback_query
     logger.debug("a query was sent to parents Qhandler {}".format(query.data))
 
-    baseurl = "http://sunbyteit.com:8000/api/"
+    baseurl = "http://ka2yab.com:8000/api/"
     suburl = "category/subs/all/{}".format(query.data[5:])
     child_categories = apifetch.fetch_json(baseurl, suburl)
     cat_names, cat_menu = gen_category(child_categories, "name", "id", "caid:")
@@ -103,12 +105,12 @@ def button_parent(bot, update):
 def button_category(bot, update):
     query = update.callback_query
     logger.debug("a query was sent for category qhandler {}".format(query.data))
-    baseurl = "http://sunbyteit.com:8000/api/"
+    baseurl = "http://ka2yab.com:8000/api/"
     suburl = "category/products/{}".format(query.data[5:])
     products = apifetch.fetch_json(baseurl, suburl)
     product_names, product_menu = gen_category(products, "name", "id", "prid:", url="http://www.sunbyteit.com/products/{}")
 
-    baseurl = "http://sunbyteit.com:8000/api/"
+    baseurl = "http://ka2yab.com:8000/api/"
     suburl = "category/subs/all/{}".format(query.data[5:])
     sub_cats = apifetch.fetch_json(baseurl, suburl)
     cat_names, cats_menu = gen_category(sub_cats, "name", "id", "caid:")
@@ -131,7 +133,7 @@ def button_more(bot, update):
 
 
 def parents_menu(bot, update):
-    categories = apifetch.fetch_json("http://www.sunbyteit.com:8000/api/",
+    categories = apifetch.fetch_json(baseurl,
                                      "category/parents")
     # TODO: implement fetch from database instead of url
     logger.debug("update categories requested!")

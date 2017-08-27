@@ -1,0 +1,132 @@
+2017-08-21 20:13:07,129 - telegram.ext.dispatcher - DEBUG - Setting singleton dispatcher as <telegram.ext.dispatcher.Dispatcher object at 0x7fd4e89a2390>
+2017-08-21 20:13:07,129 - root - INFO - adding dispatchers
+2017-08-21 20:13:07,130 - root - INFO - all commands configured
+2017-08-21 20:13:07,130 - JobQueue - DEBUG - JobQueue thread started
+2017-08-21 20:13:07,130 - telegram.ext.updater - DEBUG - dispatcher - started
+2017-08-21 20:13:07,130 - telegram.ext.updater - DEBUG - updater - started
+2017-08-21 20:13:07,131 - telegram.ext.updater - DEBUG - Updater thread started
+2017-08-21 20:13:07,131 - telegram.bot - DEBUG - Entering: set_webhook
+2017-08-21 20:13:07,131 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org
+2017-08-21 20:13:07,132 - telegram.ext.dispatcher - DEBUG - Dispatcher started
+2017-08-21 20:13:07,678 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/setWebhook HTTP/1.1" 200 68
+2017-08-21 20:13:07,679 - telegram.bot - DEBUG - True
+2017-08-21 20:13:07,679 - telegram.bot - DEBUG - Exiting: set_webhook
+2017-08-21 20:13:07,679 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:13:10,061 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getUpdates HTTP/1.1" 200 494
+2017-08-21 20:13:10,062 - telegram.bot - DEBUG - Getting updates: [432016701]
+2017-08-21 20:13:10,063 - telegram.bot - DEBUG - [<telegram.update.Update object at 0x7fd4e8140588>]
+2017-08-21 20:13:10,063 - telegram.bot - DEBUG - Exiting: get_updates
+2017-08-21 20:13:10,063 - telegram.ext.dispatcher - DEBUG - Processing Update: {'update_id': 432016701, 'callback_query': {'id': '469002696959346047', 'chat_instance': '878032055465648578', 'message': {'message_id': 527, 'date': 1503330035, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': 'Selected: 4', 'entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}, 'new_chat_member': None}, 'data': 'caid:13', 'from': {'id': 109198199, 'first_name': 'pouya', 'username': 'dinamyc', 'language_code': 'en'}}}
+2017-08-21 20:13:10,063 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:13:10,063 - root - DEBUG - a query was sent for category qhandler caid:13
+2017-08-21 20:13:10,587 - root - INFO - a request to the api for {route} was sent
+2017-08-21 20:13:10,589 - root - INFO - generated a list from the name of categories; ['هدفن جی بی ال مدل JBL_Everest_Elite700', 'هدفن جی بی ال مدل  E45BT']
+2017-08-21 20:13:10,925 - root - INFO - a request to the api for {route} was sent
+2017-08-21 20:13:10,925 - root - INFO - generated a list from the name of categories; []
+2017-08-21 20:13:10,926 - root - DEBUG - buttons created
+2017-08-21 20:13:10,926 - root - DEBUG - header and footer buttons added
+2017-08-21 20:13:10,926 - telegram.bot - DEBUG - Entering: send_message
+2017-08-21 20:13:10,926 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - Starting new HTTPS connection (2): api.telegram.org
+2017-08-21 20:13:11,493 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/sendMessage HTTP/1.1" 200 303
+2017-08-21 20:13:11,494 - telegram.bot - DEBUG - {'message_id': 529, 'date': 1503330122, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': 'there are Sub categories and products here:', 'entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}, 'new_chat_member': None}
+2017-08-21 20:13:11,494 - telegram.bot - DEBUG - Exiting: send_message
+2017-08-21 20:13:11,494 - telegram.bot - DEBUG - Entering: answer_callback_query
+2017-08-21 20:13:11,630 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/answerCallbackQuery HTTP/1.1" 200 25
+2017-08-21 20:13:11,630 - telegram.bot - DEBUG - True
+2017-08-21 20:13:11,630 - telegram.bot - DEBUG - Exiting: answer_callback_query
+2017-08-21 20:13:11,630 - root - DEBUG - callback query handled by button_parent
+2017-08-21 20:13:20,193 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getUpdates HTTP/1.1" 200 23
+2017-08-21 20:13:20,193 - telegram.bot - DEBUG - No new updates found.
+2017-08-21 20:13:20,193 - telegram.bot - DEBUG - []
+2017-08-21 20:13:20,193 - telegram.bot - DEBUG - Exiting: get_updates
+2017-08-21 20:13:20,193 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:13:30,323 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getUpdates HTTP/1.1" 200 23
+2017-08-21 20:13:30,323 - telegram.bot - DEBUG - No new updates found.
+2017-08-21 20:13:30,324 - telegram.bot - DEBUG - []
+2017-08-21 20:13:30,325 - telegram.bot - DEBUG - Exiting: get_updates
+2017-08-21 20:13:30,325 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:13:35,711 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getUpdates HTTP/1.1" 200 338
+2017-08-21 20:13:35,711 - telegram.bot - DEBUG - Getting updates: [432016702]
+2017-08-21 20:13:35,712 - telegram.bot - DEBUG - [<telegram.update.Update object at 0x7fd4e815b2e8>]
+2017-08-21 20:13:35,712 - telegram.bot - DEBUG - Exiting: get_updates
+2017-08-21 20:13:35,712 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:13:35,712 - telegram.ext.dispatcher - DEBUG - Processing Update: {'update_id': 432016702, 'message': {'message_id': 530, 'date': 1503330147, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': '/start', 'entities': [{'type': 'bot_command', 'offset': 0, 'length': 6}], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 109198199, 'first_name': 'pouya', 'username': 'dinamyc', 'language_code': 'en'}, 'new_chat_member': None}}
+2017-08-21 20:13:35,712 - telegram.bot - DEBUG - Entering: get_me
+2017-08-21 20:13:35,847 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getMe HTTP/1.1" 200 123
+2017-08-21 20:13:35,847 - telegram.bot - DEBUG - {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}
+2017-08-21 20:13:35,847 - telegram.bot - DEBUG - Exiting: get_me
+2017-08-21 20:13:35,848 - telegram.bot - DEBUG - Entering: send_message
+2017-08-21 20:13:35,994 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/sendMessage HTTP/1.1" 200 310
+2017-08-21 20:13:35,994 - telegram.bot - DEBUG - {'message_id': 531, 'date': 1503330147, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': 'خوش آمدید!', 'entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}, 'new_chat_member': None}
+2017-08-21 20:13:35,995 - telegram.bot - DEBUG - Exiting: send_message
+2017-08-21 20:13:35,995 - root - INFO - start command used by pouya 
+2017-08-21 20:13:35,995 - root - DEBUG - new user << {'id': 109198199, 'first_name': 'pouya', 'username': 'dinamyc', 'language_code': 'en'} >>started the bot
+2017-08-21 20:13:36,342 - root - INFO - a request to the api for {route} was sent
+2017-08-21 20:13:36,343 - root - DEBUG - update categories requested!
+2017-08-21 20:13:36,343 - root - INFO - generated a list from the name of categories; ['صداافزار', 'کالای دیجیتال']
+2017-08-21 20:13:36,343 - root - DEBUG - buttons created
+2017-08-21 20:13:36,343 - root - DEBUG - header and footer buttons added
+2017-08-21 20:13:36,343 - root - DEBUG - reply keyboard for category was returned
+2017-08-21 20:13:36,344 - root - DEBUG - a keyboard was generated from categories
+2017-08-21 20:13:36,344 - telegram.bot - DEBUG - Entering: send_message
+2017-08-21 20:13:36,493 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/sendMessage HTTP/1.1" 200 285
+2017-08-21 20:13:36,494 - telegram.bot - DEBUG - {'message_id': 532, 'date': 1503330148, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': 'Please choose a category:', 'entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}, 'new_chat_member': None}
+2017-08-21 20:13:36,495 - telegram.bot - DEBUG - Exiting: send_message
+2017-08-21 20:13:36,495 - root - INFO - message with keyboard was sent
+2017-08-21 20:13:39,023 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getUpdates HTTP/1.1" 200 508
+2017-08-21 20:13:39,024 - telegram.bot - DEBUG - Getting updates: [432016703]
+2017-08-21 20:13:39,024 - telegram.bot - DEBUG - [<telegram.update.Update object at 0x7fd4e815b940>]
+2017-08-21 20:13:39,024 - telegram.bot - DEBUG - Exiting: get_updates
+2017-08-21 20:13:39,025 - telegram.ext.dispatcher - DEBUG - Processing Update: {'update_id': 432016703, 'callback_query': {'id': '469002696569530902', 'chat_instance': '878032055465648578', 'message': {'message_id': 532, 'date': 1503330148, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': 'Please choose a category:', 'entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}, 'new_chat_member': None}, 'data': 'paid:14', 'from': {'id': 109198199, 'first_name': 'pouya', 'username': 'dinamyc', 'language_code': 'en'}}}
+2017-08-21 20:13:39,025 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:13:39,025 - root - DEBUG - a query was sent to parents Qhandler paid:14
+2017-08-21 20:13:39,361 - root - INFO - a request to the api for {route} was sent
+2017-08-21 20:13:39,362 - root - INFO - generated a list from the name of categories; ['لپ تاپ', 'گوشی هوشمند', 'لولزم جانبی']
+2017-08-21 20:13:39,362 - root - DEBUG - buttons created
+2017-08-21 20:13:39,362 - root - DEBUG - header and footer buttons added
+2017-08-21 20:13:39,362 - root - DEBUG - query handler built a menu
+2017-08-21 20:13:39,362 - telegram.bot - DEBUG - Entering: send_message
+2017-08-21 20:13:39,515 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/sendMessage HTTP/1.1" 200 272
+2017-08-21 20:13:39,516 - telegram.bot - DEBUG - {'message_id': 533, 'date': 1503330151, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': 'Selected: 14', 'entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}, 'new_chat_member': None}
+2017-08-21 20:13:39,516 - telegram.bot - DEBUG - Exiting: send_message
+2017-08-21 20:13:39,516 - telegram.bot - DEBUG - Entering: answer_callback_query
+2017-08-21 20:13:39,649 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/answerCallbackQuery HTTP/1.1" 200 25
+2017-08-21 20:13:39,649 - telegram.bot - DEBUG - True
+2017-08-21 20:13:39,649 - telegram.bot - DEBUG - Exiting: answer_callback_query
+2017-08-21 20:13:39,649 - root - DEBUG - callback query handled by button_parent
+2017-08-21 20:13:41,373 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getUpdates HTTP/1.1" 200 494
+2017-08-21 20:13:41,374 - telegram.bot - DEBUG - Getting updates: [432016704]
+2017-08-21 20:13:41,374 - telegram.bot - DEBUG - [<telegram.update.Update object at 0x7fd4e815b438>]
+2017-08-21 20:13:41,374 - telegram.bot - DEBUG - Exiting: get_updates
+2017-08-21 20:13:41,374 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:13:41,374 - telegram.ext.dispatcher - DEBUG - Processing Update: {'update_id': 432016704, 'callback_query': {'id': '469002697070808695', 'chat_instance': '878032055465648578', 'message': {'message_id': 533, 'date': 1503330151, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': 'Selected: 14', 'entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}, 'new_chat_member': None}, 'data': 'caid:2', 'from': {'id': 109198199, 'first_name': 'pouya', 'username': 'dinamyc', 'language_code': 'en'}}}
+2017-08-21 20:13:41,374 - root - DEBUG - a query was sent for category qhandler caid:2
+2017-08-21 20:13:42,038 - root - INFO - a request to the api for {route} was sent
+2017-08-21 20:13:42,042 - root - INFO - generated a list from the name of categories; ['لپ تاپ ایسوس مدل X550IU', 'لپ تاپ ایسوس مدل X541', 'لپ تاپ ایسوس مدل  X541UJ', 'لپ تاپ اچ پی مدل AY190', 'لپ تاپ اچ پی مدل AY076', 'لپ تاپ اچ پی مدل AW097', 'لپ تاپ ایسوس مدل N552VW', 'لپ تاپ ایسوس مدل N552VW']
+2017-08-21 20:13:42,411 - root - INFO - a request to the api for {route} was sent
+2017-08-21 20:13:42,411 - root - INFO - generated a list from the name of categories; ['Asus', 'HP']
+2017-08-21 20:13:42,411 - root - DEBUG - buttons created
+2017-08-21 20:13:42,411 - root - DEBUG - header and footer buttons added
+2017-08-21 20:13:42,412 - telegram.bot - DEBUG - Entering: send_message
+2017-08-21 20:13:42,565 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/sendMessage HTTP/1.1" 200 303
+2017-08-21 20:13:42,565 - telegram.bot - DEBUG - {'message_id': 534, 'date': 1503330154, 'chat': {'id': 109198199, 'type': 'private', 'username': 'dinamyc', 'first_name': 'pouya'}, 'text': 'there are Sub categories and products here:', 'entities': [], 'photo': [], 'new_chat_members': [], 'new_chat_photo': [], 'delete_chat_photo': False, 'group_chat_created': False, 'supergroup_chat_created': False, 'channel_chat_created': False, 'from': {'id': 435010182, 'first_name': 'فروشنده', 'username': 'forooshNewsBot'}, 'new_chat_member': None}
+2017-08-21 20:13:42,566 - telegram.bot - DEBUG - Exiting: send_message
+2017-08-21 20:13:42,566 - telegram.bot - DEBUG - Entering: answer_callback_query
+2017-08-21 20:13:42,702 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/answerCallbackQuery HTTP/1.1" 200 25
+2017-08-21 20:13:42,702 - telegram.bot - DEBUG - True
+2017-08-21 20:13:42,702 - telegram.bot - DEBUG - Exiting: answer_callback_query
+2017-08-21 20:13:42,702 - root - DEBUG - callback query handled by button_parent
+2017-08-21 20:13:51,505 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getUpdates HTTP/1.1" 200 23
+2017-08-21 20:13:51,506 - telegram.bot - DEBUG - No new updates found.
+2017-08-21 20:13:51,506 - telegram.bot - DEBUG - []
+2017-08-21 20:13:51,506 - telegram.bot - DEBUG - Exiting: get_updates
+2017-08-21 20:13:51,506 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:14:01,643 - telegram.vendor.ptb_urllib3.urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "POST /bot435010182:AAH_BwPmO_CBvrQhNs5MtPKsai2nmcCraB4/getUpdates HTTP/1.1" 200 23
+2017-08-21 20:14:01,643 - telegram.bot - DEBUG - No new updates found.
+2017-08-21 20:14:01,644 - telegram.bot - DEBUG - []
+2017-08-21 20:14:01,644 - telegram.bot - DEBUG - Exiting: get_updates
+2017-08-21 20:14:01,644 - telegram.bot - DEBUG - Entering: get_updates
+2017-08-21 20:14:08,930 - JobQueue - DEBUG - JobQueue thread stopped
+2017-08-21 20:14:08,930 - telegram.ext.updater - DEBUG - Stopping Updater and Dispatcher...
+2017-08-21 20:14:08,931 - telegram.ext.updater - DEBUG - Requesting Dispatcher to stop...
+2017-08-21 20:14:09,132 - telegram.ext.updater - WARNING - Exiting immediately!
