@@ -20,7 +20,7 @@ global baseurl
 baseurl = "http://ka2yab.com:8000/api/"
 
 def get_token():
-    token = os.getenv("FORUSHANDE_BOT")
+    token = os.getenv("FORUSHBAZZ_BOT")
     if token is None or not token:
         token = subprocess.call(["echo", "$FORUSHANDE_BOT"])
 
