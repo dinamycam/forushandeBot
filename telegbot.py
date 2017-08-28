@@ -116,8 +116,8 @@ def button_category(bot, update):
     baseurl = "http://ka2yab.com:8000/api/"
     suburl = "category/products/{}".format(query.data[5:])
     products = apifetch.fetch_json(baseurl, suburl)
-    product_names, product_menu = gen_category(
-        products, "name", "id", "prid:", url="http://www.sunbyteit.com/products/{}")
+    product_names, product_menu = gen_category(products, "name", "id", "prid:",
+                                               url="http://www.ka2yab.com/products/{}")
 
     baseurl = "http://ka2yab.com:8000/api/"
     suburl = "category/subs/all/{}".format(query.data[5:])
