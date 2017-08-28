@@ -41,17 +41,9 @@ def start(bot, update):
 
     reply_markup = parents_menu(bot, update)
     logger.debug("a keyboard was generated from categories")
-    # keyboard = [[InlineKeyboardButton("Option 1", callback_data='1'),
-    #             InlineKeyboardButton("Option 2", callback_data='2')],
-    #
-    #             [InlineKeyboardButton("Option 3", callback_data='3')]]
-    #
-    # reply_markup = InlineKeyboardMarkup(keyboard)
+
     update.message.reply_text('Please choose a category:',
                               reply_markup=reply_markup)
-    # bot.send_message(update.message.chat_id,
-    #                  "you can search in these categories: ",
-    #                  reply_markup=reply_markup)
     logger.info("message with keyboard was sent")
 
 
@@ -73,7 +65,7 @@ def build_menu(buttons,
                header_buttons=None,
                footer_buttons=None):
     """
-    :param buttons: a list of buttons
+    :param buttons: a list of buttons.
     :param n_cols:  how many columns to show the butt,ons in
     :param header_buttons:  list of buttons appended to the beginning
     :param footer_buttons:  list of buttons added to the end
