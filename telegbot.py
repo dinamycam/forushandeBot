@@ -19,6 +19,7 @@ logger = logging.getLogger()
 global baseurl
 baseurl = "http://ka2yab.com:8000/api/"
 
+
 def get_token():
     token = os.getenv("FORUSHBAZZ_BOT")
     if token is None or not token:
@@ -33,8 +34,10 @@ def get_token():
 def start(bot, update):
 
     update.message.reply_text('خوش آمدید!')
-    logger.info("start command used by {} ".format(update.message.from_user.first_name))
-    logger.debug("new user << {} >>started the bot".format(update.message.from_user))
+    logger.info("start command used by {} "
+                .format(update.message.from_user.first_name))
+    logger.debug("new user << {} >>started the bot"
+                 .format(update.message.from_user))
 
     reply_markup = parents_menu(bot, update)
     logger.debug("a keyboard was generated from categories")
@@ -44,8 +47,11 @@ def start(bot, update):
     #             [InlineKeyboardButton("Option 3", callback_data='3')]]
     #
     # reply_markup = InlineKeyboardMarkup(keyboard)
-    update.message.reply_text('Please choose a category:', reply_markup=reply_markup)
-    # bot.send_message(update.message.chat_id, "you can search in these categories: ", reply_markup=reply_markup)
+    update.message.reply_text('Please choose a category:',
+                              reply_markup=reply_markup)
+    # bot.send_message(update.message.chat_id,
+    #                  "you can search in these categories: ",
+    #                  reply_markup=reply_markup)
     logger.info("message with keyboard was sent")
 
 
@@ -58,7 +64,8 @@ def help(bot, update):
         '/help - shows this message\n'
         '/hell - go to hell\n'.format(update.message.from_user.first_name))
     logger.debug("help message is set")
-    logger.info("help command used by {}".format(update.message.from_user.first_name))
+    logger.info("help command used by {}"
+                .format(update.message.from_user.first_name))
 
 
 def build_menu(buttons,
@@ -102,13 +109,15 @@ def button_parent(bot, update):
     query.answer()
     logger.debug("callback query handled by button_parent")
 
+
 def button_category(bot, update):
     query = update.callback_query
     logger.debug("a query was sent for category qhandler {}".format(query.data))
     baseurl = "http://ka2yab.com:8000/api/"
     suburl = "category/products/{}".format(query.data[5:])
     products = apifetch.fetch_json(baseurl, suburl)
-    product_names, product_menu = gen_category(products, "name", "id", "prid:", url="http://www.sunbyteit.com/products/{}")
+    product_names, product_menu = gen_category(
+        products, "name", "id", "prid:", url="http://www.sunbyteit.com/products/{}")
 
     baseurl = "http://ka2yab.com:8000/api/"
     suburl = "category/subs/all/{}".format(query.data[5:])
@@ -141,27 +150,32 @@ def parents_menu(bot, update):
     option_btn = 'name'
     callback = 'id'
 
-    parent_names, button_list = gen_category(categories, option_btn, callback, "paid:")
+    parent_names, button_list = gen_category(categories, option_btn,
+                                             callback, "paid:")
     if len(parent_names) < 6:
         reply_markup = build_menu(button_list, n_cols=3)
     else:
-        show_more = InlineKeyboardButton("بیشتر...", callback_data="more_categories")
+        show_more = InlineKeyboardButton("بیشتر...",
+                                         callback_data="more_categories")
         button_rest = button_list[6:]
         del button_list[6:]
-        reply_markup = build_menu(button_list, n_cols=3, footer_buttons=[show_more])
+        reply_markup = build_menu(button_list, n_cols=3,
+                                  footer_buttons=[show_more])
     logger.debug("reply keyboard for category was returned")
 
     return reply_markup
 
 
-def gen_category(categories, buttonfield, callbackfield, callbackheader, url=""):
+def gen_category(categories, buttonfield,
+                 callbackfield, callbackheader, url=""):
     cat_names = []
     for item in categories:
         print(item)
         cat_names.append(item[buttonfield])
-    logger.info("generated a list from the name of categories; {}".format(cat_names))
+    logger.info("generated a list from the name of categories; {}"
+                .format(cat_names))
 
     button_list = [InlineKeyboardButton(s, url=url.format(str(categories[cat_names.index(s)][callbackfield])),
-                                        callback_data=callbackheader+str(categories[cat_names.index(s)][callbackfield]))
+                                        callback_data=callbackheader + str(categories[cat_names.index(s)][callbackfield]))
                    for s in cat_names]
     return cat_names, button_list
