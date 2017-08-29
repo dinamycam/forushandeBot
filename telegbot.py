@@ -16,12 +16,12 @@ logging.basicConfig(filename='./telegbot.log',
 
 logger = logging.getLogger()
 
-global baseurl
-baseurl = "http://ka2yab.com:8000/api/"
+global baseurl_g
+baseurl_g = "http://ka2yab.com:8000/api/"
 
 
 def get_token():
-    token = os.getenv("FORUSHBAZZ_BOT")
+    token = os.getenv("FORUSHANDE_BOT")
     if token is None or not token:
         token = subprocess.call(["echo", "$FORUSHANDE_BOT"])
 
@@ -87,7 +87,7 @@ def button_parent(bot, update):
     query = update.callback_query
     logger.debug("a query was sent to parents Qhandler {}".format(query.data))
 
-    baseurl = "http://ka2yab.com:8000/api/"
+    baseurl = baseurl_g
     suburl = "category/subs/all/{}".format(query.data[5:])
     child_categories = apifetch.fetch_json(baseurl, suburl)
     cat_names, cat_menu = gen_category(child_categories, "name", "id", "caid:")
@@ -105,13 +105,13 @@ def button_parent(bot, update):
 def button_category(bot, update):
     query = update.callback_query
     logger.debug("a query was sent for category qhandler {}".format(query.data))
-    baseurl = "http://ka2yab.com:8000/api/"
+    baseurl = baseurl_g
     suburl = "category/products/{}".format(query.data[5:])
     products = apifetch.fetch_json(baseurl, suburl)
     product_names, product_menu = gen_category(products, "name", "id", "prid:",
                                                url="http://www.ka2yab.com/products/{}")
 
-    baseurl = "http://ka2yab.com:8000/api/"
+    baseurl = baseurl_g
     suburl = "category/subs/all/{}".format(query.data[5:])
     sub_cats = apifetch.fetch_json(baseurl, suburl)
     cat_names, cats_menu = gen_category(sub_cats, "name", "id", "caid:")
@@ -134,7 +134,7 @@ def button_more(bot, update):
 
 
 def parents_menu(bot, update):
-    categories = apifetch.fetch_json(baseurl,
+    categories = apifetch.fetch_json(baseurl_g,
                                      "category/parents")
     # TODO: implement fetch from database instead of url
     logger.debug("update categories requested!")
