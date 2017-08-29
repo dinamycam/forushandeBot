@@ -92,7 +92,7 @@ def button_parent(bot, update):
     child_categories = apifetch.fetch_json(baseurl, suburl)
     cat_names, cat_menu = gen_category(child_categories, "name", "id", "caid:")
     reply_markup = build_menu(cat_menu, n_cols=3)
-    logger.debug("query handler built a menu")
+    logger.debug("query handler parent built a menu")
 
     bot.send_message(text="Selected: %s" % query.data[5:],
                      chat_id=query.message.chat_id,
